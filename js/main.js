@@ -47,7 +47,7 @@
   });
 
   /* ---------- typewriter ---------- */
-  var words = ["CEO", "GIURISTA D'IMPRESA", "AVVOCATO D'AFFARI", "INGEGNO INDUSTRIALE"];
+  var words = ["FOTOVOLTAICO", "METALLURGIA", "OFFSHORE", "GIURISTA D'IMPRESA", "AVVOCATO D'AFFARI", "ROBOTICA"];
   var typer = $("#typer");
   if (typer) {
     if (RM) { typer.textContent = words.join(" · "); }
@@ -73,8 +73,9 @@
     var i = sibs.indexOf(el);
     if (i > 0) el.style.setProperty("--d", Math.min(i * 0.08, 0.5) + "s");
   });
+  var rio;
   if ("IntersectionObserver" in window && !RM) {
-    var rio = new IntersectionObserver(function (es) {
+    rio = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); rio.unobserve(e.target); } });
     }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
     reveals.forEach(function (el) { rio.observe(el); });
@@ -164,72 +165,58 @@
     });
   });
 
-  /* ---------- gallery (impianti) ---------- */
+  /* ---------- gallery (impianti): only entries with a real foto ---------- */
   var esc = function (s) { return String(s || "").replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
-  var data = (window.IMPIANTI || []);
+  var withPhoto = (window.IMPIANTI || []).filter(function (it) { return it && it.foto; });
   var gal = $("#gallery");
-  var camIco = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h3l2-3h8l2 3h3v11H3z"/><circle cx="12" cy="13" r="4"/></svg>';
-  var withPhoto = [];
-  data.forEach(function (it) {
-    var d = document.createElement("div");
-    d.className = "g-item reveal"; d.dataset.tipo = it.tipo;
-    var tag = '<span class="g-tag ' + esc(it.tipo) + '">' + esc(it.tipo) + "</span>";
-    var meta = [it.luogo, it.anno].filter(Boolean).join(" · ");
-    if (it.foto) {
-      var idx = withPhoto.push(it) - 1;
+  var filters = $(".filters");
+  if (gal && withPhoto.length) {
+    if (filters) filters.hidden = false;
+    gal.hidden = false;
+    withPhoto.forEach(function (it, idx) {
+      var d = document.createElement("div");
+      d.className = "g-item reveal"; d.dataset.tipo = it.tipo;
+      var tag = '<span class="g-tag ' + esc(it.tipo) + '">' + esc(it.tipo) + "</span>";
+      var meta = [it.luogo, it.anno].filter(Boolean).join(" · ");
       d.innerHTML = tag + '<img loading="lazy" decoding="async" src="' + esc(it.foto) + '" alt="' + esc(it.titolo + (meta ? " — " + meta : "")) + '">' +
         '<div class="g-cap"><b>' + esc(it.titolo) + "</b>" + esc(meta) + "</div>" +
         '<button aria-label="Ingrandisci: ' + esc(it.titolo) + '" data-i="' + idx + '"></button>';
-    } else {
-      d.classList.add("g-empty");
-      d.innerHTML = tag + '<span class="shimmer"></span>' + camIco + "<strong>Foto in arrivo</strong><small>" + esc(it.titolo) + " realizzato da me</small>";
-    }
-    gal.appendChild(d);
-  });
-  // observe newly created reveals
-  $$(".g-item").forEach(function (el, i) {
-    el.style.setProperty("--d", (i % 3) * 0.08 + "s");
-    if (rio) rio.observe(el); else el.classList.add("in");
-  });
-
-  $$(".chip").forEach(function (c) {
-    c.addEventListener("click", function () {
-      $$(".chip").forEach(function (o) { o.classList.toggle("is-active", o === c); o.setAttribute("aria-selected", o === c); });
-      var f = c.dataset.filter;
-      $$(".g-item").forEach(function (g) { g.classList.toggle("hide", f !== "tutti" && g.dataset.tipo !== f); });
+      gal.appendChild(d);
     });
-  });
+    $$(".g-item").forEach(function (el, i) {
+      el.style.setProperty("--d", (i % 3) * 0.08 + "s");
+      if (rio) rio.observe(el); else el.classList.add("in");
+    });
+    $$(".chip").forEach(function (c) {
+      c.addEventListener("click", function () {
+        $$(".chip").forEach(function (o) { o.classList.toggle("is-active", o === c); o.setAttribute("aria-selected", o === c); });
+        var f = c.dataset.filter;
+        $$(".g-item").forEach(function (g) { g.classList.toggle("hide", f !== "tutti" && g.dataset.tipo !== f); });
+      });
+    });
 
-  /* ---------- lightbox ---------- */
-  var lb = $("#lightbox"), lbImg = $("img", lb), lbCap = $("figcaption", lb), cur = 0, lastFocus = null;
-  function show(i) {
-    cur = (i + withPhoto.length) % withPhoto.length;
-    var it = withPhoto[cur];
-    lbImg.src = it.foto; lbImg.alt = it.titolo;
-    lbCap.textContent = [it.titolo, [it.luogo, it.anno].filter(Boolean).join(" · "), it.didascalia].filter(Boolean).join(" — ");
+    var lb = $("#lightbox"), lbImg = $("img", lb), lbCap = $("figcaption", lb), cur = 0, lastFocus = null;
+    function show(i) {
+      cur = (i + withPhoto.length) % withPhoto.length;
+      var it = withPhoto[cur];
+      lbImg.src = it.foto; lbImg.alt = it.titolo;
+      lbCap.textContent = [it.titolo, [it.luogo, it.anno].filter(Boolean).join(" · "), it.didascalia].filter(Boolean).join(" — ");
+    }
+    function open(i) { lastFocus = document.activeElement; show(i); lb.hidden = false; document.body.style.overflow = "hidden"; $(".lb-close", lb).focus(); }
+    function close() { lb.hidden = true; document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); }
+    gal.addEventListener("click", function (e) { var b = e.target.closest("button[data-i]"); if (b) open(+b.dataset.i); });
+    $(".lb-close", lb).addEventListener("click", close);
+    $(".lb-prev", lb).addEventListener("click", function () { show(cur - 1); });
+    $(".lb-next", lb).addEventListener("click", function () { show(cur + 1); });
+    lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
+    addEventListener("keydown", function (e) {
+      if (lb.hidden) return;
+      if (e.key === "Escape") close(); else if (e.key === "ArrowLeft") show(cur - 1); else if (e.key === "ArrowRight") show(cur + 1);
+    });
+    var tx = null;
+    lb.addEventListener("touchstart", function (e) { tx = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener("touchend", function (e) { if (tx === null) return; var dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1)); tx = null; });
   }
-  function open(i) { lastFocus = document.activeElement; show(i); lb.hidden = false; document.body.style.overflow = "hidden"; $(".lb-close", lb).focus(); }
-  function close() { lb.hidden = true; document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); }
-  gal.addEventListener("click", function (e) { var b = e.target.closest("button[data-i]"); if (b) open(+b.dataset.i); });
-  $(".lb-close", lb).addEventListener("click", close);
-  $(".lb-prev", lb).addEventListener("click", function () { show(cur - 1); });
-  $(".lb-next", lb).addEventListener("click", function () { show(cur + 1); });
-  lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
-  addEventListener("keydown", function (e) {
-    if (lb.hidden) return;
-    if (e.key === "Escape") close(); else if (e.key === "ArrowLeft") show(cur - 1); else if (e.key === "ArrowRight") show(cur + 1);
-  });
-  var tx = null;
-  lb.addEventListener("touchstart", function (e) { tx = e.touches[0].clientX; }, { passive: true });
-  lb.addEventListener("touchend", function (e) { if (tx === null) return; var dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1)); tx = null; });
-
-  /* ---------- contacts ---------- */
-  var C = window.CONTATTI || {}, cl = $("#contact-links"), html = "";
-  if (C.email) html += '<a class="c-link" href="mailto:' + esc(C.email) + '">' + esc(C.email) + "</a>";
-  if (C.linkedin) html += '<a class="c-link" href="' + esc(C.linkedin) + '" target="_blank" rel="noopener">LinkedIn</a>';
-  if (C.instagram) html += '<a class="c-link" href="' + esc(C.instagram) + '" target="_blank" rel="noopener">Instagram</a>';
-  if (C.citta) html += '<span class="c-link">' + esc(C.citta) + "</span>";
-  cl.innerHTML = html || '<div class="c-empty">I contatti arriveranno presto.</div>';
 
   $("#year").textContent = new Date().getFullYear();
 })();
