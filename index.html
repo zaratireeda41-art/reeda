@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reeda — Energia, industria e diritto d'impresa</title>
+<meta name="description" content="Il sito personale di Reeda: impianti fotovoltaici ed eolici, metallurgia pesante, cantieristica navale e offshore, giurisprudenza verso il diritto d'impresa, robotica industriale e razzi.">
+<meta name="theme-color" content="#07090c">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preload" as="image" href="media/hero-eolico.jpg">
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="brand" aria-label="Inizio"><span class="brand-mark">R</span><span class="brand-name">REEDA</span></a>
+  <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+  <nav id="menu" class="menu">
+    <a href="#impianti">Impianti</a>
+    <a href="#metallurgia">Metallurgia</a>
+    <a href="#offshore">Navale &amp; Offshore</a>
+    <a href="#diritto">Diritto</a>
+    <a href="#robotica">Robotica</a>
+    <a href="#contatti" class="menu-cta">Contatti</a>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- 1. HERO -->
+  <section class="hero" aria-label="Presentazione">
+    <div class="hero-media" data-parallax="0.35">
+      <video class="bg-video" muted loop playsinline preload="metadata" poster="media/hero-eolico.jpg">
+        <source src="media/hero-eolico.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-shade"></div>
+    <div class="grid-lines" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="eyebrow reveal">Energia · Industria · Diritto</p>
+      <h1 class="hero-title reveal"><span class="split">Reeda</span></h1>
+      <p class="typer reveal" aria-live="polite"><span class="typer-text" id="typer">CEO</span><span class="caret" aria-hidden="true"></span></p>
+      <p class="hero-tag reveal">Dalle energie rinnovabili all'acciaio, dai cantieri offshore al diritto d'impresa: dove l'industria incontra la legge.</p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary magnetic" href="#impianti">I miei impianti</a>
+        <a class="btn btn-ghost magnetic" href="#diritto">Il percorso giuridico</a>
+      </div>
+    </div>
+    <span class="ai-badge">Video generato con IA</span>
+    <a class="scroll-hint" href="#impianti" aria-label="Scorri"><span></span></a>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>FOTOVOLTAICO</span><i>✦</i><span>EOLICO</span><i>✦</i><span>METALLURGIA</span><i>✦</i><span>OFFSHORE</span><i>✦</i><span>APPALTI</span><i>✦</i><span>DIRITTO D'IMPRESA</span><i>✦</i><span>M&amp;A</span><i>✦</i><span>ROBOTICA</span><i>✦</i><span>AEROSPAZIO</span><i>✦</i>
+      <span>FOTOVOLTAICO</span><i>✦</i><span>EOLICO</span><i>✦</i><span>METALLURGIA</span><i>✦</i><span>OFFSHORE</span><i>✦</i><span>APPALTI</span><i>✦</i><span>DIRITTO D'IMPRESA</span><i>✦</i><span>M&amp;A</span><i>✦</i><span>ROBOTICA</span><i>✦</i><span>AEROSPAZIO</span><i>✦</i>
+    </div>
+  </div>
+
+  <!-- 2. IMPIANTI -->
+  <section id="impianti" class="section">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="sec-num reveal">01</span>
+        <h2 class="reveal">I miei impianti</h2>
+        <p class="lead reveal">Impianti fotovoltaici ed eolici a cui ho lavorato in passato. Qui ci sono solo foto vere dei miei lavori.</p>
+      </header>
+
+      <div class="filters reveal" role="tablist" aria-label="Filtra impianti">
+        <button class="chip is-active" data-filter="tutti" role="tab" aria-selected="true">Tutti</button>
+        <button class="chip" data-filter="fotovoltaico" role="tab" aria-selected="false">Fotovoltaico</button>
+        <button class="chip" data-filter="eolico" role="tab" aria-selected="false">Eolico</button>
+      </div>
+      <div class="gallery" id="gallery"></div>
+
+      <div class="split-feature">
+        <figure class="vid-card reveal">
+          <video class="lazy-video" muted loop playsinline preload="none" poster="media/fotovoltaico.jpg" data-src="media/fotovoltaico.mp4"></video>
+          <span class="ai-badge">Video generato con IA</span>
+          <figcaption>Fotovoltaico a terra: file di moduli su inseguitori.</figcaption>
+        </figure>
+        <div class="feature-text">
+          <h3 class="reveal">Come lavora il sole, come lavora il vento</h3>
+          <p class="reveal">Un impianto <strong>fotovoltaico</strong> converte la luce in corrente continua attraverso le celle dei moduli; gli inverter la trasformano in corrente alternata da immettere in rete. Strutture fisse o inseguitori monoassiali, cavidotti, cabine di trasformazione e sistemi di monitoraggio completano l'opera.</p>
+          <p class="reveal">Un aerogeneratore <strong>eolico</strong> trasforma l'energia cinetica del vento in rotazione del rotore e, tramite il generatore nella navicella, in energia elettrica. Fondazioni, torre, pale e connessione alla rete richiedono logistica pesante e progettazione accurata, a terra come in mare.</p>
+          <ul class="facts reveal">
+            <li><span>Autorizzazioni</span> procedure abilitative, valutazioni ambientali, connessione alla rete</li>
+            <li><span>Cantiere</span> strutture, montaggio, cablaggio, collaudo</li>
+            <li><span>Esercizio</span> monitoraggio, manutenzione, rendimento nel tempo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. METALLURGIA -->
+  <section id="metallurgia" class="section band">
+    <div class="band-media" data-parallax="0.2">
+      <video class="lazy-video" muted loop playsinline preload="none" poster="media/fonderia.jpg" data-src="media/fonderia.mp4"></video>
+    </div>
+    <div class="band-shade"></div>
+    <span class="ai-badge">Video generato con IA</span>
+    <div class="wrap band-content">
+      <header class="sec-head">
+        <span class="sec-num reveal">02</span>
+        <h2 class="reveal">Metallurgia pesante</h2>
+        <p class="lead reveal">La mia passione per l'acciaio: il materiale che tiene in piedi ponti, navi, piattaforme e torri eoliche.</p>
+      </header>
+      <div class="cards">
+        <article class="card tilt reveal">
+          <span class="card-ico">01</span>
+          <h3>Fusione</h3>
+          <p>Altoforno e convertitore a ossigeno da una parte, forno elettrico ad arco alimentato a rottame dall'altra: due vie per arrivare all'acciaio liquido.</p>
+        </article>
+        <article class="card tilt reveal">
+          <span class="card-ico">02</span>
+          <h3>Colata e formatura</h3>
+          <p>Colata continua in bramme, blumi e billette; poi laminazione a caldo e a freddo, forgiatura e fusione in getti per i pezzi più complessi.</p>
+        </article>
+        <article class="card tilt reveal">
+          <span class="card-ico">03</span>
+          <h3>Trattamenti</h3>
+          <p>Tempra, rinvenimento e normalizzazione cambiano la microstruttura del metallo e ne regolano durezza, tenacità e resistenza a fatica.</p>
+        </article>
+        <article class="card tilt reveal">
+          <span class="card-ico">04</span>
+          <h3>Controllo</h3>
+          <p>Prove di trazione e resilienza, controlli non distruttivi a ultrasuoni e radiografici, certificazioni dei materiali secondo le norme tecniche.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. NAVALE / OFFSHORE -->
+  <section id="offshore" class="section">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="sec-num reveal">03</span>
+        <h2 class="reveal">Cantieristica navale, offshore e Oil &amp; Gas</h2>
+        <p class="lead reveal">Costruzione navale, grandi appalti e l'estrazione di petrolio e gas, in mare e sulla terraferma.</p>
+      </header>
+
+      <figure class="vid-wide reveal">
+        <video class="lazy-video" muted loop playsinline preload="none" poster="media/cantiere-offshore.jpg" data-src="media/cantiere-offshore.mp4"></video>
+        <span class="ai-badge">Video generato con IA</span>
+      </figure>
+
+      <div class="tabs reveal">
+        <div class="tab-list" role="tablist" aria-label="Approfondimenti offshore">
+          <button role="tab" aria-selected="true" aria-controls="t1" id="b1" class="tab is-active">Cantiere navale</button>
+          <button role="tab" aria-selected="false" aria-controls="t2" id="b2" class="tab">Appalti</button>
+          <button role="tab" aria-selected="false" aria-controls="t3" id="b3" class="tab">Estrazione in mare</button>
+          <button role="tab" aria-selected="false" aria-controls="t4" id="b4" class="tab">Estrazione a terra</button>
+        </div>
+        <div class="tab-panel is-active" role="tabpanel" id="t1" aria-labelledby="b1">
+          <h3>Dal blocco allo scafo</h3>
+          <p>Le navi e le strutture offshore moderne nascono a blocchi: lamiere tagliate e saldate in officina, assemblate in sezioni, poi unite in bacino o sullo scalo. Gru a portale, saldatura automatizzata e controlli dimensionali scandiscono ogni fase fino al varo e alle prove in mare.</p>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="t2" aria-labelledby="b2" hidden>
+          <h3>Contratti da miliardi, rischi da gestire</h3>
+          <p>I grandi progetti energetici si affidano spesso con contratti EPC o EPCI (ingegneria, approvvigionamento, costruzione e installazione). Contano la ripartizione dei rischi, le garanzie, le penali per ritardo, le varianti e la risoluzione delle controversie, spesso con modelli contrattuali internazionali e arbitrato.</p>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="t3" aria-labelledby="b3" hidden>
+          <h3>Offshore: piattaforme e sistemi sottomarini</h3>
+          <p>In mare si lavora con piattaforme fisse a jacket, unità galleggianti di produzione e stoccaggio (FPSO), impianti di perforazione mobili e sistemi sottomarini collegati da condotte. Ogni fase, dalla perforazione allo smantellamento, richiede tecnologia e un quadro di concessioni e sicurezza molto rigoroso.</p>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="t4" aria-labelledby="b4" hidden>
+          <h3>Onshore: pozzi, centrali e condotte</h3>
+          <p>Sulla terraferma l'estrazione passa da impianti di perforazione, pozzi, centri di trattamento dell'olio e del gas e reti di oleodotti e gasdotti. Permessi di ricerca, concessioni di coltivazione e tutela ambientale sono il punto di incontro tra ingegneria e diritto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. DIRITTO -->
+  <section id="diritto" class="section section-law">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="sec-num reveal">04</span>
+        <h2 class="reveal">Giurisprudenza: verso il diritto d'impresa</h2>
+        <p class="lead reveal">Studio giurisprudenza con un obiettivo preciso: diventare <strong>giurista d'impresa</strong> o <strong>avvocato d'affari</strong>, al servizio di energia e industria.</p>
+      </header>
+
+      <div class="law-grid">
+        <ol class="timeline">
+          <li class="reveal"><span class="t-dot"></span><div><h3>Laurea magistrale in Giurisprudenza</h3><p>Il percorso a ciclo unico: diritto privato, costituzionale, commerciale, amministrativo, internazionale. Le fondamenta.</p><span class="t-tag now">In corso</span></div></li>
+          <li class="reveal"><span class="t-dot"></span><div><h3>Specializzazione</h3><p>Diritto commerciale e societario, contratti internazionali, diritto dell'energia e degli appalti pubblici.</p><span class="t-tag">Prossimo passo</span></div></li>
+          <li class="reveal"><span class="t-dot"></span><div><h3>Pratica e formazione</h3><p>Tirocinio presso uno studio d'affari o un ufficio legale d'impresa; per la professione forense, praticantato ed esame di abilitazione.</p><span class="t-tag">Obiettivo</span></div></li>
+          <li class="reveal"><span class="t-dot"></span><div><h3>Giurista d'impresa / Avvocato d'affari</h3><p>Affiancare le imprese nelle operazioni, nei contratti e nei progetti industriali e energetici.</p><span class="t-tag goal">Traguardo</span></div></li>
+        </ol>
+
+        <div class="areas">
+          <article class="area tilt reveal"><h3>Diritto societario</h3><p>Costituzione e governance delle società, organi sociali, patti parasociali, responsabilità degli amministratori.</p></article>
+          <article class="area tilt reveal"><h3>Contratti</h3><p>Fornitura, EPC, joint venture, distribuzione: redazione e negoziazione, clausole su rischio, garanzie e penali.</p></article>
+          <article class="area tilt reveal"><h3>Appalti</h3><p>Appalti pubblici e privati, procedure di gara, esecuzione, varianti, riserve e contenzioso.</p></article>
+          <article class="area tilt reveal"><h3>Energia</h3><p>Autorizzazioni per rinnovabili, concessioni, mercato elettrico, contratti di acquisto di energia (PPA).</p></article>
+          <article class="area tilt reveal"><h3>M&amp;A</h3><p>Fusioni e acquisizioni: due diligence, contratti di compravendita di partecipazioni, closing e integrazione.</p></article>
+        </div>
+      </div>
+
+      <blockquote class="quote reveal">
+        <p>«L'imprenditore è chi esercita professionalmente un'attività economica organizzata al fine della produzione o dello scambio di beni o di servizi.»</p>
+        <cite>Codice civile, art. 2082</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- 6. ROBOTICA -->
+  <section id="robotica" class="section band band-right">
+    <div class="band-media" data-parallax="0.2">
+      <video class="lazy-video" muted loop playsinline preload="none" poster="media/robot-razzo.jpg" data-src="media/robot-razzo.mp4"></video>
+    </div>
+    <div class="band-shade"></div>
+    <span class="ai-badge">Video generato con IA</span>
+    <div class="wrap band-content">
+      <header class="sec-head">
+        <span class="sec-num reveal">05</span>
+        <h2 class="reveal">Robotica industriale e razzi</h2>
+        <p class="lead reveal">Bracci robotici a sei assi che saldano, rivettano e ispezionano le strutture dei lanciatori: precisione al decimo di millimetro su pezzi lunghi decine di metri.</p>
+      </header>
+      <div class="stats">
+        <div class="stat reveal"><span class="count" data-to="6">0</span><small>assi di un braccio antropomorfo industriale</small></div>
+        <div class="stat reveal"><span class="count" data-to="1000" data-suffix="+">0</span><small>kg sollevabili dai robot industriali più grandi</small></div>
+        <div class="stat reveal"><span class="count" data-to="120" data-suffix=" Hz">0</span><small>la simulazione fisica del mio braccio 3D</small></div>
+      </div>
+      <div class="cards cards-3">
+        <article class="card tilt reveal"><h3>Saldatura e assemblaggio</h3><p>Saldatura per attrito e a fascio, foratura e rivettatura automatizzate dei serbatoi e delle sezioni dei razzi.</p></article>
+        <article class="card tilt reveal"><h3>Compositi</h3><p>Deposizione automatica di fibre di carbonio per strutture leggere: ugelli, carenature, interstadi.</p></article>
+        <article class="card tilt reveal"><h3>Ispezione</h3><p>Robot con sensori a ultrasuoni e visione artificiale controllano ogni giunzione prima del volo.</p></article>
+      </div>
+      <a class="arm-link magnetic reveal" href="https://zaratireeda41-art.github.io/mie-cose/" target="_blank" rel="noopener">
+        <span class="arm-k">Il mio progetto</span>
+        <span class="arm-t">Guarda il mio braccio robotico in 3D</span>
+        <span class="arm-s">Simulazione con fisica reale, servomotori e cinematica inversa →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 7. CONTATTI -->
+  <section id="contatti" class="section contact">
+    <div class="wrap">
+      <header class="sec-head center">
+        <span class="sec-num reveal">06</span>
+        <h2 class="reveal big">Parliamone.</h2>
+        <p class="lead reveal">Energia, industria, contratti, progetti. Se hai un'idea, scrivimi.</p>
+      </header>
+      <div class="contact-links reveal" id="contact-links"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>© <span id="year"></span> Reeda</p>
+  <p class="foot-note">I video e le immagini con l'etichetta «generato con IA» sono stati creati con l'intelligenza artificiale e non ritraggono lavori reali. Le foto della sezione «I miei impianti» sono foto vere dei miei lavori.</p>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Foto ingrandita">
+  <button class="lb-close" aria-label="Chiudi">×</button>
+  <button class="lb-prev" aria-label="Precedente">‹</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button class="lb-next" aria-label="Successiva">›</button>
+</div>
+
+<script src="js/impianti.js"></script>
+<script src="js/contatti.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
