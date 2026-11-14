@@ -12,7 +12,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="preload" as="image" href="media/hero-eolico.jpg">
-<link rel="preload" as="image" href="foto/reeda.jpg">
 </head>
 <body>
 <div class="progress" aria-hidden="true"><span></span></div>
@@ -21,6 +20,7 @@
   <a href="#top" class="brand" aria-label="Inizio"><span class="brand-mark">R</span><span class="brand-name">REEDA</span></a>
   <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
   <nav id="menu" class="menu">
+    <a href="#chi-sono">Chi sono</a>
     <a href="#fotovoltaico">Fotovoltaico</a>
     <a href="#metallurgia">Metallurgia</a>
     <a href="#offshore">Navale &amp; Offshore</a>
@@ -42,9 +42,6 @@
     <div class="hero-content">
       <p class="eyebrow reveal">Le mie passioni</p>
       <h1 class="hero-title reveal"><span class="split">Reeda</span></h1>
-      <figure class="hero-portrait reveal" style="--d:.3s">
-        <img src="foto/reeda.jpg" alt="Reeda" width="675" height="900">
-      </figure>
       <p class="typer reveal" aria-live="polite"><span class="typer-text" id="typer">FOTOVOLTAICO</span><span class="caret" aria-hidden="true"></span></p>
       <p class="hero-tag reveal">Quello che mi piace: le energie rinnovabili, l'acciaio, i cantieri in mare e a terra, lo studio del diritto, i robot e i razzi.</p>
       <div class="hero-actions reveal">
@@ -53,7 +50,7 @@
       </div>
     </div>
     <span class="ai-badge">Video generato con IA</span>
-    <a class="scroll-hint" href="#fotovoltaico" aria-label="Scorri"><span></span></a>
+    <a class="scroll-hint" href="#chi-sono" aria-label="Scorri"><span></span></a>
   </section>
 
   <!-- MARQUEE -->
@@ -63,6 +60,19 @@
       <span>FOTOVOLTAICO</span><i>✦</i><span>EOLICO</span><i>✦</i><span>METALLURGIA</span><i>✦</i><span>CANTIERI NAVALI</span><i>✦</i><span>OFFSHORE</span><i>✦</i><span>GIURISPRUDENZA</span><i>✦</i><span>ROBOTICA</span><i>✦</i><span>RAZZI</span><i>✦</i>
     </div>
   </div>
+
+  <!-- CHI SONO -->
+  <section id="chi-sono" class="section about">
+    <div class="wrap about-grid">
+      <figure class="about-photo reveal">
+        <span class="about-photo-ring">
+          <img src="foto/reeda-chi-sono.jpg" alt="Reeda" width="525" height="700">
+        </span>
+      </figure>
+      <h2 class="reveal">Chi sono</h2>
+      <p class="about-bio reveal">Di giorno lavoro nel settore immobiliare; al pomeriggio e alla sera studio giurisprudenza, con il sogno di arrivare a essere giurista d'impresa oppure avvocato d'affari. In passato ho realizzato impianti fotovoltaici ed eolici. Mi appassionano la metallurgia pesante, la cantieristica navale e il mondo offshore, la robotica industriale e i razzi; per hobby sto costruendo un braccio robotico.</p>
+    </div>
+  </section>
 
   <!-- 2. FOTOVOLTAICO ED EOLICO -->
   <section id="fotovoltaico" class="section">
@@ -246,7 +256,7 @@
 
 <footer class="foot">
   <p>© <span id="year"></span> Reeda</p>
-  <p class="foot-note">Solo i video con l'etichetta «generato con IA» sono stati creati con l'intelligenza artificiale e non ritraggono lavori reali. La foto di Reeda è una foto vera.</p>
+  <p class="foot-note">Solo i video con l'etichetta «generato con IA» sono stati creati con l'intelligenza artificiale e non ritraggono lavori reali. La foto nella sezione «Chi sono» è una foto vera.</p>
 </footer>
 
 <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Foto ingrandita">
