@@ -248,3 +248,9 @@ h3{font:600 21px/1.25 var(--ff-d);letter-spacing:-.01em;margin-bottom:10px}
   .g-cap b{font-size:14px}
 }
 .band>.ai-badge{top:auto;bottom:28px}@media (max-width:760px){.band>.ai-badge{top:auto;bottom:20px}}
+
+/* chi sono centrato */
+.about-grid{grid-template-columns:1fr!important;grid-template-areas:"photo" "title" "bio"!important;justify-items:center;text-align:center;margin-left:auto;margin-right:auto;row-gap:18px}
+.about-photo{justify-self:center}
+.about-grid>h2,.about-bio{align-self:auto;text-align:center}
+.about-photo img{filter:grayscale(1)}
