@@ -254,3 +254,6 @@ h3{font:600 21px/1.25 var(--ff-d);letter-spacing:-.01em;margin-bottom:10px}
 .about-photo{justify-self:center}
 .about-grid>h2,.about-bio{align-self:auto;text-align:center}
 .about-photo img{filter:grayscale(1)}
+/* frase fornitori */
+.about-grid{grid-template-areas:"photo" "title" "bio" "cerco"!important}
+.about-bio.about-cerco{grid-area:cerco;color:var(--txt,#fff)}
