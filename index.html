@@ -2,22 +2,23 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Reeda — le mie passioni</title>
 <meta name="description" content="Il sito personale di Reeda: le mie passioni per il fotovoltaico e l'eolico, la metallurgia pesante, la cantieristica navale e offshore, lo studio di giurisprudenza, la robotica industriale e i razzi.">
 <meta name="theme-color" content="#07090c">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=15">
-<script>!function(d){var h=d.documentElement;h.classList.add("js");try{if(sessionStorage.getItem("reeda-intro"))h.classList.add("pl-skip");sessionStorage.setItem("reeda-intro","1")}catch(e){}setTimeout(function(){if(!window.__motionReady)h.classList.remove("js")},6000)}(document);</script>
+<link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css?v=19">
+<script src="js/boot.js?v=19"></script>
 <link rel="preload" as="image" href="media/hero-eolico.jpg">
 </head>
 <body>
 <div class="preloader" aria-hidden="true">
   <div class="pl-inner">
-    <div class="pl-word"><span style="--i:0">R</span><span style="--i:1">e</span><span style="--i:2">e</span><span style="--i:3">d</span><span style="--i:4">a</span></div>
+    <div class="pl-word"><span>R</span><span>e</span><span>e</span><span>d</span><span>a</span></div>
     <div class="pl-bar"><span></span></div>
   </div>
 </div>
@@ -52,7 +53,7 @@
     <div class="hero-content">
       <div class="mask mask-eyebrow"><p class="eyebrow h-up">Le mie passioni</p></div>
       <h1 class="hero-title"><span class="split">Reeda</span></h1>
-      <div class="mask mask-typer"><p class="typer h-up" style="--hd:.28s" aria-live="polite"><span class="typer-text" id="typer">FOTOVOLTAICO</span><span class="caret" aria-hidden="true"></span></p></div>
+      <div class="mask mask-typer"><p class="typer h-up" aria-live="polite"><span class="typer-text" id="typer">FOTOVOLTAICO</span><span class="caret" aria-hidden="true"></span></p></div>
       <p class="hero-tag">Quello che mi piace: le energie rinnovabili, l'acciaio, i cantieri in mare e a terra, lo studio del diritto, i robot e i razzi.</p>
       <div class="hero-actions">
         <a class="btn btn-primary magnetic" href="#fotovoltaico">Fotovoltaico ed eolico</a>
@@ -76,13 +77,13 @@
     <div class="wrap about-grid">
       <figure class="about-photo reveal">
         <span class="about-photo-ring">
-          <img src="foto/reeda-bn.jpg" alt="Reeda" width="164" height="164" style="display:block;width:100%;height:100%;max-width:164px;max-height:164px;object-fit:cover;border-radius:50%">
+          <img src="foto/reeda-bn.jpg" alt="Reeda" width="164" height="164" class="about-img">
         </span>
       </figure>
       <h2 class="reveal">Chi sono</h2>
       <p class="about-bio reveal">Di giorno lavoro nel settore immobiliare; al pomeriggio e alla sera studio giurisprudenza, con il sogno di arrivare a essere giurista d'impresa oppure avvocato d'affari. In passato ho realizzato impianti fotovoltaici ed eolici. Mi appassionano la metallurgia pesante, la cantieristica navale e il mondo offshore, la robotica industriale e i razzi; per hobby sto costruendo un braccio robotico.</p>
-      <p class="about-bio about-cerco reveal"><strong>Cerco fornitori e collaborazioni da ogni paese</strong>: meccanica, elettronica, automazione e robotica, creazione di siti web e contrattualistica.<br>Scrivimi a <a href="mailto:xentriq.industry@proton.me" style="color:var(--acc);font-weight:600">xentriq.industry@proton.me</a> · XENTRIQ INDUSTRY</p>
-      <div class="about-flags reveal reveal-fade" style="grid-area:flags;display:flex;flex-wrap:wrap;justify-content:center;gap:22px;margin-top:6px"><figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:6px"><img src="https://flagcdn.com/us.svg" alt="Bandiera Stati Uniti" width="56" height="38" loading="lazy" style="width:56px;height:38px;object-fit:cover;border-radius:6px;box-shadow:0 4px 14px -6px rgba(0,0,0,.6)" class="flag-wave"></figure><figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:6px"><img src="https://flagcdn.com/cn.svg" alt="Bandiera Cina" width="56" height="38" loading="lazy" style="width:56px;height:38px;object-fit:cover;border-radius:6px;box-shadow:0 4px 14px -6px rgba(0,0,0,.6)" class="flag-wave"></figure><figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:6px"><img src="https://flagcdn.com/jp.svg" alt="Bandiera Giappone" width="56" height="38" loading="lazy" style="width:56px;height:38px;object-fit:cover;border-radius:6px;box-shadow:0 4px 14px -6px rgba(0,0,0,.6)" class="flag-wave"></figure><figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:6px"><img src="https://flagcdn.com/ae.svg" alt="Bandiera Emirati Arabi Uniti" width="56" height="38" loading="lazy" style="width:56px;height:38px;object-fit:cover;border-radius:6px;box-shadow:0 4px 14px -6px rgba(0,0,0,.6)" class="flag-wave"></figure></div>
+      <p class="about-bio about-cerco reveal"><strong>Cerco fornitori e collaborazioni da ogni paese</strong>: meccanica, elettronica, automazione e robotica, creazione di siti web e contrattualistica.<br>Scrivimi a <a class="mail-link" href="mailto:xentriq.industry@proton.me">xentriq.industry@proton.me</a> · XENTRIQ INDUSTRY</p>
+      <div class="about-flags reveal reveal-fade"><figure><img src="img/flags/us.svg" alt="Bandiera Stati Uniti" width="56" height="38" loading="lazy" class="flag-wave"></figure><figure><img src="img/flags/cn.svg" alt="Bandiera Cina" width="56" height="38" loading="lazy" class="flag-wave"></figure><figure><img src="img/flags/jp.svg" alt="Bandiera Giappone" width="56" height="38" loading="lazy" class="flag-wave"></figure><figure><img src="img/flags/ae.svg" alt="Bandiera Emirati Arabi Uniti" width="56" height="38" loading="lazy" class="flag-wave"></figure></div>
     </div>
   </section>
 
@@ -277,10 +278,10 @@
   <button class="lb-next" aria-label="Successiva">›</button>
 </div>
 
-<script src="js/impianti.js"></script>
-<script src="js/vendor/gsap.min.js?v=15"></script>
-<script src="js/vendor/ScrollTrigger.min.js?v=15"></script>
-<script src="js/vendor/lenis.min.js?v=15"></script>
-<script src="js/main.js?v=15"></script>
+<script src="js/impianti.js?v=19"></script>
+<script src="js/vendor/gsap.min.js?v=19"></script>
+<script src="js/vendor/ScrollTrigger.min.js?v=19"></script>
+<script src="js/vendor/lenis.min.js?v=19"></script>
+<script src="js/main.js?v=19"></script>
 </body>
 </html>
