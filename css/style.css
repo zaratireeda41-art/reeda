@@ -1,3 +1,8 @@
+/* Font self-hosted (nessuna richiesta a Google: privacy + CSP font-src 'self') */
+@font-face{font-family:"Inter";font-style:normal;font-weight:400 600;font-display:swap;src:url("../fonts/inter-latin-ext.woff2") format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Inter";font-style:normal;font-weight:400 600;font-display:swap;src:url("../fonts/inter-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Space Grotesk";font-style:normal;font-weight:400 700;font-display:swap;src:url("../fonts/space-grotesk-latin-ext.woff2") format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Space Grotesk";font-style:normal;font-weight:400 700;font-display:swap;src:url("../fonts/space-grotesk-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 :root{
   --bg:#07090c; --bg2:#0d1117; --panel:#11161e; --line:rgba(255,255,255,.08);
   --txt:#e9edf2; --mut:#9aa5b4; --acc:#ff7a1a; --acc2:#ffb347; --cy:#3fd0ff;
@@ -457,3 +462,15 @@ h2.h-split .wi{display:inline-block;background:linear-gradient(180deg,#fff 28%,#
   .nav.nav-hidden{transform:none}
   .has-cursor,.has-cursor *{cursor:auto!important}
 }
+
+/* ===== Sicurezza: stili spostati dagli attributi style="" dell'HTML (CSP senza 'unsafe-inline') ===== */
+.pl-word span:nth-child(1){--i:0}.pl-word span:nth-child(2){--i:1}.pl-word span:nth-child(3){--i:2}.pl-word span:nth-child(4){--i:3}.pl-word span:nth-child(5){--i:4}
+.typer.h-up{--hd:.28s}
+.about-photo-ring img.about-img{display:block;width:100%;height:100%;max-width:164px;max-height:164px;object-fit:cover;border-radius:50%}
+.about-cerco a.mail-link{color:var(--acc);font-weight:600}
+.about-flags{grid-area:flags;display:flex;flex-wrap:wrap;justify-content:center;gap:22px;margin-top:6px}
+.about-flags figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px}
+.about-flags img{width:56px;height:38px;object-fit:cover;border-radius:6px;box-shadow:0 4px 14px -6px rgba(0,0,0,.6)}
+.hero-tag .lw{display:inline-block}
+/* anti-clickjacking: se il sito viene caricato dentro un iframe altrui, non mostra nulla */
+html.framed body{display:none!important}
