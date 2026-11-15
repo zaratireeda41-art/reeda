@@ -1,4 +1,5 @@
-/* Reeda — main.js v15: premium motion (GSAP + ScrollTrigger + Lenis, vendored locally) */
+/* Reeda — main.js v19: premium motion (GSAP + ScrollTrigger + Lenis, vendored locally)
+   Sicurezza: nessun innerHTML (compatibile con CSP require-trusted-types-for 'script'), nessuno style="" inline */
 (function () {
   "use strict";
   var doc = document.documentElement;
@@ -10,8 +11,19 @@
   var fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
-  var esc = function (s) { return String(s || "").replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
   var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
+  // crea <tag class="cls">testo</tag> senza innerHTML
+  var mk = function (tag, cls, text, ariaHidden) {
+    var e = document.createElement(tag); if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    if (ariaHidden) e.setAttribute("aria-hidden", "true");
+    return e;
+  };
+  // sostituisce il contenuto di el con la lista di nodi, separati da spazi se sep
+  var fill = function (el, nodes, sep) {
+    el.textContent = "";
+    nodes.forEach(function (n, i) { if (sep && i) el.appendChild(document.createTextNode(" ")); el.appendChild(n); });
+  };
 
   var G = window.gsap, ST = window.ScrollTrigger;
   var HAS_G = !!(G && ST) && !RM;
@@ -95,7 +107,7 @@
       if (tagSplit) return; tagSplit = true;
       if (RM) { tag.classList.add("lines-ready"); return; }
       var words = tagText.split(/\s+/);
-      tag.innerHTML = words.map(function (w) { return '<span class="lw" style="display:inline-block">' + esc(w) + "</span>"; }).join(" ");
+      fill(tag, words.map(function (w) { return mk("span", "lw", w); }), true);
       var lines = [], lastTop = null;
       $$(".lw", tag).forEach(function (s) {
         var top = s.offsetTop;
@@ -103,9 +115,10 @@
         lines[lines.length - 1].push(s.textContent);
       });
       tag.setAttribute("aria-label", tagText);
-      tag.innerHTML = lines.map(function (l, i) {
-        return '<span class="ln" aria-hidden="true"><span class="lni" style="--l:' + i + '">' + esc(l.join(" ")) + "</span></span>";
-      }).join("");
+      fill(tag, lines.map(function (l, i) {
+        var ln = mk("span", "ln", null, true), lni = mk("span", "lni", l.join(" "));
+        lni.style.setProperty("--l", i); ln.appendChild(lni); return ln;
+      }), false);
       tag.classList.add("lines-ready");
       // once revealed, restore plain text so it re-flows naturally on resize/rotation
       var restore = function () { tag.textContent = tagText; tag.removeAttribute("aria-label"); removeEventListener("resize", restore); };
@@ -162,9 +175,9 @@
       var txt = h.textContent.trim();
       h.classList.remove("reveal");
       h.setAttribute("aria-label", txt);
-      h.innerHTML = txt.split(/\s+/).map(function (w) {
-        return '<span class="w" aria-hidden="true"><span class="wi">' + esc(w) + "</span></span>";
-      }).join(" ");
+      fill(h, txt.split(/\s+/).map(function (w) {
+        var o = mk("span", "w", null, true); o.appendChild(mk("span", "wi", w)); return o;
+      }), true);
       h.classList.add("h-split");
       var wis = $$(".wi", h);
       G.set(wis, { yPercent: 118, rotate: 4 });
@@ -206,7 +219,7 @@
       var q = $(".quote"); q.classList.remove("reveal");
       var qt = qp.textContent.trim();
       qp.setAttribute("aria-label", qt);
-      qp.innerHTML = qt.split(/\s+/).map(function (w) { return '<span class="qw" aria-hidden="true">' + esc(w) + "</span>"; }).join(" ");
+      fill(qp, qt.split(/\s+/).map(function (w) { return mk("span", "qw", w, true); }), true);
       G.fromTo($$(".qw", qp), { opacity: 0.14 }, { opacity: 1, stagger: 0.1, ease: "none",
         scrollTrigger: { trigger: qp, start: "top 85%", end: "bottom 50%", scrub: true } });
     }
@@ -339,7 +352,9 @@
     // magnetic buttons (+ label parallax)
     $$(".magnetic, .brand").forEach(function (el) {
       if (el.classList.contains("btn") && !$(".btn-label", el)) {
-        el.innerHTML = '<span class="btn-label">' + el.innerHTML + "</span>";
+        var bl = mk("span", "btn-label");
+        while (el.firstChild) bl.appendChild(el.firstChild);
+        el.appendChild(bl);
       }
       var label = $(".btn-label", el);
       if (HAS_G) {
@@ -416,11 +431,16 @@
     withPhoto.forEach(function (it, idx) {
       var d = document.createElement("div");
       d.className = "g-item reveal"; d.dataset.tipo = it.tipo;
-      var tg = '<span class="g-tag ' + esc(it.tipo) + '">' + esc(it.tipo) + "</span>";
+      var tipo = it.tipo === "eolico" ? "eolico" : "fotovoltaico";
       var meta = [it.luogo, it.anno].filter(Boolean).join(" · ");
-      d.innerHTML = tg + '<img loading="lazy" decoding="async" src="' + esc(it.foto) + '" alt="' + esc(it.titolo + (meta ? " — " + meta : "")) + '">' +
-        '<div class="g-cap"><b>' + esc(it.titolo) + "</b>" + esc(meta) + "</div>" +
-        '<button aria-label="Ingrandisci: ' + esc(it.titolo) + '" data-i="' + idx + '"></button>';
+      d.appendChild(mk("span", "g-tag " + tipo, tipo));
+      var im = document.createElement("img");
+      im.loading = "lazy"; im.decoding = "async"; im.src = String(it.foto); im.alt = (it.titolo || "") + (meta ? " — " + meta : "");
+      d.appendChild(im);
+      var cap = mk("div", "g-cap"); cap.appendChild(mk("b", null, it.titolo || "")); cap.appendChild(document.createTextNode(meta));
+      d.appendChild(cap);
+      var gb = document.createElement("button"); gb.setAttribute("aria-label", "Ingrandisci: " + (it.titolo || "")); gb.dataset.i = idx;
+      d.appendChild(gb);
       gal.appendChild(d);
     });
     $$(".g-item").forEach(function (el, i) {
