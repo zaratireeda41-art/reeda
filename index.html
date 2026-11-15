@@ -10,11 +10,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=13">
+<link rel="stylesheet" href="css/style.css?v=14">
 <link rel="preload" as="image" href="media/hero-eolico.jpg">
 </head>
 <body>
 <div class="progress" aria-hidden="true"><span></span></div>
+<div class="cursor-glow" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
   <a href="#top" class="brand" aria-label="Inizio"><span class="brand-mark">R</span><span class="brand-name">REEDA</span></a>
@@ -237,6 +238,10 @@
         <h2 class="reveal">Robotica industriale e razzi</h2>
         <p class="lead reveal">Mi piace anche la robotica industriale e il mondo dei razzi costruiti con i bracci robotici: saldano, rivettano e ispezionano le strutture dei lanciatori, con una precisione al decimo di millimetro su pezzi lunghi decine di metri.</p>
       </header>
+      <figure class="vid-wide reveal">
+        <video class="lazy-video" muted loop playsinline preload="none" poster="media/razzo-ingegneri.jpg" data-src="media/razzo-ingegneri.mp4"></video>
+      </figure>
+
       <div class="stats">
         <div class="stat reveal"><span class="count" data-to="6">0</span><small>assi di un braccio antropomorfo industriale</small></div>
         <div class="stat reveal"><span class="count" data-to="1000" data-suffix="+">0</span><small>kg sollevabili dai robot industriali più grandi</small></div>
@@ -264,6 +269,6 @@
 </div>
 
 <script src="js/impianti.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=14"></script>
 </body>
 </html>
