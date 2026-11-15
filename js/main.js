@@ -154,6 +154,22 @@
     });
   }
 
+  /* ---------- cursor glow (desktop, fine pointer only) ---------- */
+  var glow = $(".cursor-glow");
+  if (glow && fine && !RM) {
+    var gx = -9999, gy = 0, gOn = false, gTick = false;
+    function glowMove() {
+      glow.style.transform = "translate3d(" + gx + "px," + gy + "px,0)";
+      gTick = false;
+    }
+    addEventListener("pointermove", function (e) {
+      gx = e.clientX; gy = e.clientY;
+      if (!gOn) { glow.classList.add("on"); gOn = true; }
+      if (!gTick) { gTick = true; requestAnimationFrame(glowMove); }
+    }, { passive: true });
+    document.addEventListener("mouseleave", function () { glow.classList.remove("on"); gOn = false; });
+  }
+
   /* ---------- tabs ---------- */
   var tabs = $$(".tab");
   tabs.forEach(function (t) {
