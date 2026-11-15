@@ -268,3 +268,69 @@ h3{font:600 21px/1.25 var(--ff-d);letter-spacing:-.01em;margin-bottom:10px}
 @media (prefers-reduced-motion:reduce){.flag-wave{animation:none}}
 /* bandiere ferme */
 .flag-wave{animation:none!important;transform:none!important}
+
+
+/* --- motion v14: more dynamic, flags stay still --- */
+.progress span{box-shadow:0 0 10px rgba(255,122,26,.75),0 0 18px rgba(255,179,71,.35)}
+
+.cursor-glow{position:fixed;top:0;left:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;pointer-events:none;z-index:30;background:radial-gradient(circle,rgba(255,122,26,.16) 0%,rgba(255,179,71,.06) 38%,transparent 68%);opacity:0;transform:translate3d(-9999px,0,0);transition:opacity .45s;mix-blend-mode:screen;will-change:transform}
+.cursor-glow.on{opacity:1}
+
+.grid-lines{animation:gridDrift 48s linear infinite}
+@keyframes gridDrift{to{background-position:64px 64px}}
+
+/* section titles slide in + accent line + even vertical gradient */
+.sec-head h2{position:relative;background:linear-gradient(180deg,#fff 28%,#c5cdd6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head h2::after{content:"";display:block;width:72px;height:3px;margin-top:16px;border-radius:99px;background:var(--grad);transform:scaleX(1);transform-origin:left center}
+.sec-head.center h2::after{margin-inline:auto;transform-origin:center}
+.js .sec-head h2.reveal{transform:translateX(-40px) translateY(0);opacity:0}
+.js .sec-head h2.reveal.in{transform:none;opacity:1}
+.js .sec-head h2::after{transform:scaleX(0);transition:transform .9s var(--ease) .28s}
+.js .sec-head h2.in::after{transform:scaleX(1)}
+.js .sec-head.center h2.reveal{transform:translateY(28px)}
+
+/* stronger staggered lift for cards/stats */
+.js .cards .reveal,.js .stats .reveal,.js .areas .reveal,.js .timeline>li.reveal{transform:translateY(46px)}
+
+.sec-num{position:relative}
+.js .sec-num.in{box-shadow:0 0 0 1px rgba(255,122,26,.2),0 0 22px -8px rgba(255,122,26,.55)}
+
+@media (hover:hover) and (pointer:fine){
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{position:relative;overflow:hidden}
+  .btn-primary::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.4) 50%,transparent 65%);transform:translateX(-120%);pointer-events:none}
+  .btn-primary:hover::after{transform:translateX(120%);transition:transform .7s var(--ease)}
+  .card:hover,.area:hover{box-shadow:0 20px 48px -20px rgba(255,122,26,.5)}
+  .vid-card,.vid-wide{transition:transform .55s var(--ease),box-shadow .55s}
+  .vid-card:hover,.vid-wide:hover{transform:translateY(-6px);box-shadow:0 28px 60px -28px rgba(0,0,0,.75)}
+}
+
+#robotica .vid-wide{margin:0 0 40px;max-width:920px}
+#robotica .vid-wide video{aspect-ratio:16/9}
+
+.stat{position:relative}
+.stat::after{content:"";position:absolute;left:0;top:0;width:72px;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease) .15s}
+.js .stat.in::after,.js .stat.reveal.in::after{transform:scaleX(1)}
+
+.timeline li.reveal.in .t-dot{animation:dotPulse 2.6s ease-in-out infinite}
+@keyframes dotPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,122,26,0)}50%{box-shadow:0 0 0 8px rgba(255,122,26,.18)}}
+.timeline li:last-child.reveal.in .t-dot{animation-name:dotPulseCy}
+@keyframes dotPulseCy{0%,100%{box-shadow:0 0 0 6px rgba(63,208,255,.15)}50%{box-shadow:0 0 0 10px rgba(63,208,255,.28)}}
+
+.count{background-size:180% 100%;background-position:0 50%}
+.js .count{animation:gradShift 6s ease-in-out infinite}
+@keyframes gradShift{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+
+@media (prefers-reduced-motion:reduce){
+  .cursor-glow{display:none!important}
+  .grid-lines{animation:none}
+  .js .sec-head h2.reveal,.js .sec-head.center h2.reveal{opacity:1;transform:none;animation:none}
+  .js .sec-head h2::after,.js .sec-head h2.in::after{transform:scaleX(1);transition:none}
+  .js .count{animation:none}
+  .timeline li.reveal.in .t-dot{animation:none}
+  .stat::after,.js .stat.in::after,.js .stat.reveal.in::after{transform:scaleX(1)}
+}
+
+/* flags must stay completely still */
+.flag-wave{animation:none!important;transform:none!important}
+.about-flags figure:hover .flag-wave{animation:none!important}
