@@ -10,10 +10,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=14">
+<link rel="stylesheet" href="css/style.css?v=15">
+<script>!function(d){var h=d.documentElement;h.classList.add("js");try{if(sessionStorage.getItem("reeda-intro"))h.classList.add("pl-skip");sessionStorage.setItem("reeda-intro","1")}catch(e){}setTimeout(function(){if(!window.__motionReady)h.classList.remove("js")},6000)}(document);</script>
 <link rel="preload" as="image" href="media/hero-eolico.jpg">
 </head>
 <body>
+<div class="preloader" aria-hidden="true">
+  <div class="pl-inner">
+    <div class="pl-word"><span style="--i:0">R</span><span style="--i:1">e</span><span style="--i:2">e</span><span style="--i:3">d</span><span style="--i:4">a</span></div>
+    <div class="pl-bar"><span></span></div>
+  </div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"><div class="cursor-ring"><span></span></div><div class="cursor-dot"></div></div>
 <div class="progress" aria-hidden="true"><span></span></div>
 <div class="cursor-glow" aria-hidden="true"></div>
 
@@ -41,11 +50,11 @@
     <div class="hero-shade"></div>
     <div class="grid-lines" aria-hidden="true"></div>
     <div class="hero-content">
-      <p class="eyebrow reveal">Le mie passioni</p>
-      <h1 class="hero-title reveal"><span class="split">Reeda</span></h1>
-      <p class="typer reveal" aria-live="polite"><span class="typer-text" id="typer">FOTOVOLTAICO</span><span class="caret" aria-hidden="true"></span></p>
-      <p class="hero-tag reveal">Quello che mi piace: le energie rinnovabili, l'acciaio, i cantieri in mare e a terra, lo studio del diritto, i robot e i razzi.</p>
-      <div class="hero-actions reveal">
+      <div class="mask mask-eyebrow"><p class="eyebrow h-up">Le mie passioni</p></div>
+      <h1 class="hero-title"><span class="split">Reeda</span></h1>
+      <div class="mask mask-typer"><p class="typer h-up" style="--hd:.28s" aria-live="polite"><span class="typer-text" id="typer">FOTOVOLTAICO</span><span class="caret" aria-hidden="true"></span></p></div>
+      <p class="hero-tag">Quello che mi piace: le energie rinnovabili, l'acciaio, i cantieri in mare e a terra, lo studio del diritto, i robot e i razzi.</p>
+      <div class="hero-actions">
         <a class="btn btn-primary magnetic" href="#fotovoltaico">Fotovoltaico ed eolico</a>
         <a class="btn btn-ghost magnetic" href="#diritto">Lo studio di giurisprudenza</a>
       </div>
@@ -73,7 +82,7 @@
       <h2 class="reveal">Chi sono</h2>
       <p class="about-bio reveal">Di giorno lavoro nel settore immobiliare; al pomeriggio e alla sera studio giurisprudenza, con il sogno di arrivare a essere giurista d'impresa oppure avvocato d'affari. In passato ho realizzato impianti fotovoltaici ed eolici. Mi appassionano la metallurgia pesante, la cantieristica navale e il mondo offshore, la robotica industriale e i razzi; per hobby sto costruendo un braccio robotico.</p>
       <p class="about-bio about-cerco reveal"><strong>Cerco fornitori e collaborazioni da ogni paese</strong>: meccanica, elettronica, automazione e robotica, creazione di siti web e contrattualistica.<br>Scrivimi a <a href="mailto:xentriq.industry@proton.me" style="color:var(--acc);font-weight:600">xentriq.industry@proton.me</a> · XENTRIQ INDUSTRY</p>
-      <div class="about-flags reveal" style="grid-area:flags;display:flex;flex-wrap:wrap;justify-content:center;gap:22px;margin-top:6px"><figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:6px"><img src="https://flagcdn.com/us.svg" alt="Bandiera Stati Uniti" width="56" height="38" loading="lazy" style="width:56px;height:38px;object-fit:cover;border-radius:6px;box-shadow:0 4px 14px -6px rgba(0,0,0,.6)" class="flag-wave"></figure><figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:6px"><img src="https://flagcdn.com/cn.svg" alt="Bandiera Cina" width="56" height="38" loading="lazy" style="width:56px;height:38px;object-fit:cover;border-radius:6px;box-shadow:0 4px 14px -6px rgba(0,0,0,.6)" class="flag-wave"></figure><figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:6px"><img src="https://flagcdn.com/jp.svg" alt="Bandiera Giappone" width="56" height="38" loading="lazy" style="width:56px;height:38px;object-fit:cover;border-radius:6px;box-shadow:0 4px 14px -6px rgba(0,0,0,.6)" class="flag-wave"></figure><figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:6px"><img src="https://flagcdn.com/ae.svg" alt="Bandiera Emirati Arabi Uniti" width="56" height="38" loading="lazy" style="width:56px;height:38px;object-fit:cover;border-radius:6px;box-shadow:0 4px 14px -6px rgba(0,0,0,.6)" class="flag-wave"></figure></div>
+      <div class="about-flags reveal reveal-fade" style="grid-area:flags;display:flex;flex-wrap:wrap;justify-content:center;gap:22px;margin-top:6px"><figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:6px"><img src="https://flagcdn.com/us.svg" alt="Bandiera Stati Uniti" width="56" height="38" loading="lazy" style="width:56px;height:38px;object-fit:cover;border-radius:6px;box-shadow:0 4px 14px -6px rgba(0,0,0,.6)" class="flag-wave"></figure><figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:6px"><img src="https://flagcdn.com/cn.svg" alt="Bandiera Cina" width="56" height="38" loading="lazy" style="width:56px;height:38px;object-fit:cover;border-radius:6px;box-shadow:0 4px 14px -6px rgba(0,0,0,.6)" class="flag-wave"></figure><figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:6px"><img src="https://flagcdn.com/jp.svg" alt="Bandiera Giappone" width="56" height="38" loading="lazy" style="width:56px;height:38px;object-fit:cover;border-radius:6px;box-shadow:0 4px 14px -6px rgba(0,0,0,.6)" class="flag-wave"></figure><figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:6px"><img src="https://flagcdn.com/ae.svg" alt="Bandiera Emirati Arabi Uniti" width="56" height="38" loading="lazy" style="width:56px;height:38px;object-fit:cover;border-radius:6px;box-shadow:0 4px 14px -6px rgba(0,0,0,.6)" class="flag-wave"></figure></div>
     </div>
   </section>
 
@@ -269,6 +278,9 @@
 </div>
 
 <script src="js/impianti.js"></script>
-<script src="js/main.js?v=14"></script>
+<script src="js/vendor/gsap.min.js?v=15"></script>
+<script src="js/vendor/ScrollTrigger.min.js?v=15"></script>
+<script src="js/vendor/lenis.min.js?v=15"></script>
+<script src="js/main.js?v=15"></script>
 </body>
 </html>
