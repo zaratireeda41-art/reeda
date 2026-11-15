@@ -258,3 +258,11 @@ h3{font:600 21px/1.25 var(--ff-d);letter-spacing:-.01em;margin-bottom:10px}
 .about-grid{grid-template-areas:"photo" "title" "bio" "cerco"!important}
 .about-bio.about-cerco{grid-area:cerco;color:var(--txt,#fff)}
 .about-grid{grid-template-areas:"photo" "title" "bio" "cerco" "flags"!important}
+/* bandiere animate */
+.about-flags figure:nth-child(2) .flag-wave{animation-delay:-.6s}
+.about-flags figure:nth-child(3) .flag-wave{animation-delay:-1.2s}
+.about-flags figure:nth-child(4) .flag-wave{animation-delay:-1.8s}
+.flag-wave{transform-origin:left center;animation:flagWave 2.4s ease-in-out infinite;will-change:transform}
+@keyframes flagWave{0%,100%{transform:perspective(200px) rotateY(0deg) skewY(0deg) translateY(0)}25%{transform:perspective(200px) rotateY(-14deg) skewY(2deg) translateY(-3px)}50%{transform:perspective(200px) rotateY(0deg) skewY(-1deg) translateY(0)}75%{transform:perspective(200px) rotateY(12deg) skewY(1.5deg) translateY(-2px)}}
+.about-flags figure:hover .flag-wave{animation-duration:1s}
+@media (prefers-reduced-motion:reduce){.flag-wave{animation:none}}
